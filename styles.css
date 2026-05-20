@@ -484,7 +484,7 @@ h2::after {
 .celda-compra {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: flex-start;
 }
 
 .selector-cantidad {
@@ -532,6 +532,101 @@ h2::after {
     outline: none;
 }
 
+.compra-no-disponible {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #777777;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.compra-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.78);
+    z-index: 1100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.compra-overlay:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.compra-contenido {
+    width: min(92%, 520px);
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 24px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+    position: relative;
+    animation: aparecer 0.25s ease-out;
+}
+
+.compra-contenido h3 {
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.compra-evento {
+    font-size: 0.95rem;
+    color: var(--color-texto-mutado);
+    margin-bottom: 16px;
+}
+
+.formulario-compra {
+    text-align: left;
+}
+
+.formulario-compra select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 2px;
+    font-family: var(--fuente-principal);
+    font-size: 0.95rem;
+    transition: var(--transicion);
+    background-color: #ffffff;
+}
+
+.formulario-compra select:focus {
+    outline: none;
+    border-color: var(--color-secundario);
+}
+
+.compra-confirmada {
+    text-align: center;
+}
+
+.compra-confirmada h3 {
+    color: #137333;
+}
+
+.mensaje-confirmacion {
+    font-size: 0.98rem;
+    color: var(--color-texto);
+    margin-bottom: 18px;
+    line-height: 1.55;
+}
+
+.boton-volver {
+    display: inline-block;
+    width: auto;
+    text-decoration: none;
+    padding: 10px 18px;
+}
+
 /* Botón deshabilitado para eventos con Cupo Lleno */
 .boton-comprar.deshabilitado {
     background-color: #cccccc;
@@ -571,6 +666,7 @@ h2::after {
 }
 
 .grupo-formulario input,
+.grupo-formulario select,
 .grupo-formulario textarea {
     width: 100%;
     padding: 10px;
@@ -582,9 +678,67 @@ h2::after {
 }
 
 .grupo-formulario input:focus,
+.grupo-formulario select:focus,
 .grupo-formulario textarea:focus {
     outline: none;
     border-color: var(--color-secundario);
+}
+
+/* ==========================================================================
+   8.1 PÁGINA DE COMPRA
+   ========================================================================== */
+.pagina-compra {
+    background-color: var(--color-fondo-gris);
+    min-height: 100vh;
+}
+
+.compra-principal {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.tarjeta-compra {
+    width: 100%;
+    max-width: 620px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.tarjeta-compra h1 {
+    font-size: 1.9rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.descripcion-compra {
+    color: var(--color-texto-mutado);
+    margin-bottom: 20px;
+}
+
+.nota-compra {
+    margin-top: 14px;
+    color: var(--color-texto-mutado);
+    font-size: 0.86rem;
+    line-height: 1.5;
+}
+
+.enlace-volver {
+    display: inline-block;
+    margin-top: 16px;
+    color: var(--color-primario);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.enlace-volver:hover,
+.enlace-volver:focus {
+    color: var(--color-secundario);
 }
 
 .boton-enviar {
@@ -605,6 +759,18 @@ h2::after {
 .boton-enviar:focus {
     background-color: var(--color-secundario);
     color: var(--color-primario);
+}
+
+.tarjeta-confirmacion {
+    text-align: center;
+}
+
+.boton-regresar {
+    display: inline-block;
+    width: auto;
+    text-decoration: none;
+    margin-top: 8px;
+    padding: 12px 24px;
 }
 
 /* ==========================================================================
@@ -643,5 +809,13 @@ h2::after {
 
     .grid-bio {
         flex-direction: column;
+    }
+
+    .tarjeta-compra {
+        padding: 22px;
+    }
+
+    .tarjeta-compra h1 {
+        font-size: 1.5rem;
     }
 }

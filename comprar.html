@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulario de compra de entradas para las próximas presentaciones de Alejandro Vance.">
+    <title>Comprar Entradas | Alejandro Vance</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="pagina-compra">
+    <main class="contenedor compra-principal" role="main">
+        <section class="tarjeta-compra" aria-labelledby="titulo-compra">
+            <h1 id="titulo-compra">Confirmar compra de entradas</h1>
+            <p class="descripcion-compra">Complete los datos para registrar su solicitud de compra y enviar la notificación al correo de ventas.</p>
+
+            <form action="https://api.web3forms.com/submit" method="POST" class="formulario-contacto" aria-label="Formulario de compra de entradas">
+                <input type="hidden" name="access_key" value="27cce857-4876-4fb0-8d74-adc74a949bd3">
+                <input type="hidden" name="subject" value="Nueva solicitud de compra de entradas">
+                <input type="hidden" name="from_name" value="Sitio Alejandro Vance">
+
+                <div class="grupo-formulario">
+                    <label for="evento">Exposición / Evento:</label>
+                    <select id="evento" name="evento" required>
+                        <option value="">Seleccione un evento</option>
+                        <option value="raices-de-bronce">Raíces de Bronce (15 de Julio, 2026)</option>
+                        <option value="simetrias-ocultas">Simetrías Ocultas (22 de Setiembre, 2026)</option>
+                    </select>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="nombre-compra">Nombre completo:</label>
+                    <input type="text" id="nombre-compra" name="nombre-compra" required>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="correo-compra">Correo electrónico:</label>
+                    <input type="email" id="correo-compra" name="correo-compra" required>
+                </div>
+
+                <div class="grupo-formulario">
+                    <label for="cantidad-compra">Cantidad de entradas:</label>
+                    <select id="cantidad-compra" name="cantidad-compra" required>
+                        <option value="">Seleccione</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="boton-enviar">Confirmar compra</button>
+            </form>
+
+            <p class="nota-compra">Al confirmar, la solicitud se enviara directamente al correo configurado en Web3Forms.</p>
+
+            <a href="index.html#proximas-presentaciones" class="enlace-volver">Volver a próximas presentaciones</a>
+        </section>
+    </main>
+</body>
+</html>
